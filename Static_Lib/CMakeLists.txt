@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.10)
+project(StatsLib)
+add_library(math_tools STATIC src/math_tools.cpp)
+target_include_directories(math_tools PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+add_executable(math src/main.cpp src/volume.cpp)
+target_link_libraries(math math_tools)

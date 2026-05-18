@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.10)
+project(RKutta)
+add_library(ob OBJECT src/rk4_solver.cpp)
+target_include_directories(ob PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+#add_executable(ex src/main.cpp $<TARGET_OBJECTS:ob>)
+#target_include_directories(ex PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+add_executable(ex src/main.cpp)
+target_link_libraries(ex PRIVATE ob)
