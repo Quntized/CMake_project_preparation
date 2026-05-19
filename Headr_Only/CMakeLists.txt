@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.10)
+project(Heda CXX)
+add_library(core INTERFACE)
+target_include_directories(core INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+enable_testing()
+add_executable(testts tests/math_test.cpp)
+target_link_libraries(testts PRIVATE core)
+add_test(NAME add_test COMMAND testts)
