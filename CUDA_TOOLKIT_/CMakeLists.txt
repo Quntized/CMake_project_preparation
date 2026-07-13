@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.18)
+project(MyProject LANGUAGES CXX)
+
+include(CheckLanguage)
+check_language(CUDA)
+if(CMAKE_CUDA_COMPILER)
+  enable_language(CUDA)
+  find_package(CUDAToolkit QUIET)
+endif()
+
+if(CUDAToolkit_FOUND)
+  message(STATUS "CUDA found! Enabling GPU acceleration.")
+else()
+  message(STATUS "No CUDA toolkit found. Building for CPU only.")
+endif()
